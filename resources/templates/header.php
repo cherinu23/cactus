@@ -19,3 +19,18 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xs-8 col-sm-8 col-md-5">
+				<div class="card card-login">
+					<div class="card-heading">
+						<div class="row">
+							<div class="col">
+								<a href="#" class="active" id="login-form-link">Login</a>
+							</div>
+							<div class="col">
+								<a href="#" id="register-form-link">Register</a>
+							</div>
+						</div>
+						<hr>
+					</div>

@@ -26,6 +26,9 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
+
+							<!-- LOGIN FORM -->
+
 								<form id="login-form" action="" method="post" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
@@ -54,6 +57,11 @@
 										</div>
 									</div>
 								</form>
+
+								<!-- LOGIN FORM END -->
+
+								<!-- REGISTER FORM -->
+
 								<form id="register-form" action="" method="post" role="form" style="display: none;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
@@ -75,6 +83,9 @@
 										</div>
 									</div>
 								</form>
+
+								<!-- REGISTER FORM END -->
+
 							</div>
 						</div>
 					</div>
@@ -91,5 +102,6 @@
     */
 
     echo $setInIndexDotPhp;
+
 
         ?>

@@ -73,7 +73,7 @@
 										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="required">
 									</div>
 									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" required="required">
+										<input type="password" name="confirm_password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" required="required">
 									</div>
 									<div class="form-group">
 										<div class="row">

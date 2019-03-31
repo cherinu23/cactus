@@ -1,4 +1,26 @@
+<!-- <?php
 
+// session_start();
+
+// if(isset($_SESSION['username'])){
+
+
+//     $_SESSION['msg'] = "You must log in first";
+//     header("location : index.php");
+
+// }
+
+// if(isset($_Get['logout'])){
+
+//     session_destroy();
+//     unset($_SESSION['username']);
+//     header("location : index.php");
+// }
+
+
+
+
+?> -->
 <!-- TO BE TEMPLATED -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +37,11 @@
  <link rel="stylesheet" href="/css/pref.css">
 </head>
 <body class="body-tpage g-bg-all">
+
+<!--  <?php 
+// if(isset($_SESSION['succes'])) : 
+  ?>  -->
+  
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -36,6 +63,7 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
+
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light2 border-bottom2">
         <button class="btn btn-primary-2" id="menu-toggle">Open Menu</button>
@@ -72,6 +100,20 @@
     <!-- /#page-content-wrapper -->
 
   </div>
+<!-- <?php 
+// endif
+ ?>
+<?php 
+// if(isset($_SESSION['username'])) : 
+  ?>
+  <h3>Welcome<strong>
+  <?php 
+  // echo $_SESSION['username']; 
+  ?></strong></h3>
+  <button><a href="home.php?logout='1'"></a></button>
+  <?php 
+  // endif
+  ?> -->
 
   <!-- CDN/jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -92,5 +134,6 @@ $("#menu-toggle").click(function(e) {
     $('#tabu' + numb).show();
   });
 </script>
+
 </body>
 </html>

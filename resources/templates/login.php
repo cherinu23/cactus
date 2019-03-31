@@ -1,35 +1,7 @@
-<body class="g-bg-all body-tpage2">
-	<div class="container">
-		<div class="row no-gutters no-gutters2 mt-3 justify-content-center">
-			<div class="col-md-2">
-				<div class="card-img-top text-center">
-					<img src="images/content/task2.svg" style="width:5em; height:8em; class="card-img-top" alt="..." >
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-xs-8 col-sm-8 col-md-5">
-				<div class="card card-login">
-					<div class="card-heading">
-						<div class="row">
-							<div class="col">
-								<a href="#" class="active" id="login-form-link">Login</a>
-							</div>
-							<div class="col">
-								<a href="#" id="register-form-link">Register</a>
-							</div>
-						</div>
-						<hr>
-					</div>
-					<div class="card-body">
-						<div class="row">
-							<div class="col">
 
 								<!-- LOGIN FORM -->
 
-								<form id="login-form" action="login.php" method="post" role="form" style="display: block;">
+								<form id="login-form" action="" method="post" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
 									</div>
@@ -59,3 +31,5 @@
 								</form>
 
 								<!-- LOGIN FORM END -->
+
+								

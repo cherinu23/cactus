@@ -23,14 +23,14 @@
 
 // register users
 
- if(isset($_POST['username'])){
+ if(isset($_POST['username']) && !empty($_POST['username'])){
  	$username = mysqli_real_escape_string($mysqli, $_POST['username']);
  } 
 
- if(isset($_POST['email'])){
+ if(isset($_POST['email']) && !empty($_POST['email'])){
  	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
  } 
- if(isset($_POST['password'])){
+ if(isset($_POST['password']) && !empty($_POST['password'])){
  	$password = mysqli_real_escape_string($mysqli, $_POST['password']);
  } 
  if(isset($_POST['confirm_password'])){
@@ -39,10 +39,10 @@
 
 //form validation
 
- if(empty($username)) {array_push($errors, "Username is required");};
- if(empty($email)) {array_push($errors, "email is required");};
- if(empty($password)) {array_push($errors, "Username is required");};
- if($password != $confirm_password){array_push($errors, "Password do not match");};
+ // if(empty($username)) {array_push($errors, "Username is required");};
+ // if(empty($email)) {array_push($errors, "email is required");};
+ // if(empty($password)) {array_push($errors, "Username is required");};
+ // if($password != $confirm_password){array_push($errors, "Password do not match");};
 
  //check for duplicates using prepared statement
 
@@ -64,7 +64,9 @@
  	$secon->close();
  	$chkd->close();
 
+ 	echo "<p style='text-align: center; color:red'>DATA registered</p>";
  };
+
 
  // header('Location:resources/templates/home.php');
 

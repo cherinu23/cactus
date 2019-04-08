@@ -6,69 +6,96 @@
 
  $username = "";
  $email = "";
- $password = "";
- $confirm_password = "";
 
  $errors = array();
 
-// connect to db
-
- $mysqli = new mysqli($config['db']['db1']['host'], $config['db']['db1']['username'], $config['db']['db1']['password'], $config['db']['db1']['dbname']);
- 
-// check connection
-
- if ($mysqli->connect_errno) {
- 	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
- }
-
 // register users
 
- if(isset($_POST['username']) && !empty($_POST['username'])){
- 	$username = mysqli_real_escape_string($mysqli, $_POST['username']);
- } 
+ if (isset($_POST['register-submit'])) {
+ 	$username = $_POST['username'];
+ 	$email = $_POST['email'];
+ 	$password = $_POST['password'];
+ 	$confirm_password = $_POST['confirm_password'];
+ 	
+// form validation
 
- if(isset($_POST['email']) && !empty($_POST['email'])){
- 	$email = mysqli_real_escape_string($mysqli, $_POST['email']);
- } 
- if(isset($_POST['password']) && !empty($_POST['password'])){
- 	$password = mysqli_real_escape_string($mysqli, $_POST['password']);
- } 
- if(isset($_POST['confirm_password'])){
- 	$confirm_password = mysqli_real_escape_string($mysqli, $_POST['confirm_password']);
- }
+ 	if (empty($username)) {
+ 		$errors['username'] = "Username required";
+ 	}
+ 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+ 		$errors['email'] = "Email address is invalid";
+ 	}
+ 	if (empty($email)) {
+ 		$errors['email'] = "Email required";
+ 	}
+ 	if (empty($password)) {
+ 		$errors['password'] = "Password required";
+ 	}
+ 	if ($password !== $confirm_password) {
+ 		$errors['password'] = "The two password do not match";
+ 	}
 
-//form validation
 
- // if(empty($username)) {array_push($errors, "Username is required");};
- // if(empty($email)) {array_push($errors, "email is required");};
- // if(empty($password)) {array_push($errors, "Username is required");};
- // if($password != $confirm_password){array_push($errors, "Password do not match");};
-
- //check for duplicates using prepared statement
-
- $chkd = $mysqli->prepare("SELECT * FROM user WHERE username = ? or email = ?");
- $chkd->bind_param("ss", $username, $email);
- $chkd->execute();
- $chkd->store_result();
- 
- $numRows = $chkd->num_rows();
- if( $numRows )
- {
- 	echo "<p style='text-align: center; color:red'>Username/Email is already registered</p>";
-
- } else {
-
- 	$secon = $mysqli->prepare("INSERT INTO user (username, email, password) VALUES (?, ?, ?)");
- 	$secon->bind_param("sss", $username, $email, $password);
- 	$secon->execute();
- 	$secon->close();
+ 	$chkd = $mysqli->prepare("SELECT * FROM user WHERE email = ? LIMIT 1");
+ 	$chkd->bind_param("s", $email);
+ 	$chkd->execute();
+ 	$chkd->store_result();
+ 	$row_cnt = $chkd->num_rows;
  	$chkd->close();
 
- 	echo "<p style='text-align: center; color:red'>DATA registered</p>";
+ 	if ($row_cnt > 0) {
+ 		$errors['email'] = "Email already exists";
+ 	}
+
+ 	$chkd = $mysqli->prepare("SELECT * FROM user WHERE username = ? LIMIT 1");
+ 	$chkd->bind_param("s", $username);
+ 	$chkd->execute();
+ 	$chkd->store_result();
+ 	$row_cnt = $chkd->num_rows;
+ 	$chkd->close();
+
+ 	if ($row_cnt > 0) {
+ 		$errors['username'] = "Username already exists";
+ 	}
+
+
+ 	if (count($errors) === 0) {
+ 		
+ 		$password = password_hash($password, PASSWORD_DEFAULT);
+ 		$verified = false;
+ 		$token = bin2hex(random_bytes(50));
+
+
+ 		$secon = $mysqli->prepare("INSERT INTO user (username, email, password, verified, token) VALUES (?, ?, ?, ?, ?)");
+ 		$secon->bind_param("sssds", $username, $email, $password, $verified, $token);
+ 		$secon->execute();
+ 		
+
+ 		if ($secon->execute()) {
+ 		// login user
+ 			$user_id = $mysqli->insert_id;
+ 			$_SESSION['id'] = $user_id;
+ 			$_SESSION['username'] = $username;
+ 			$_SESSION['email'] = $email;
+ 			$_SESSION['verified'] = $verified;
+ 		// inform user loged in
+ 			$_SESSION['message'] = "Your are no logged in!";
+ 			$_SESSION['alert-class'] = "alert-succes";
+ 			header('Location:resources/templates/home.php');
+ 			exit();
+
+ 		} else {
+ 			$errors['db_error'] = "Database error: failed to register";
+ 		}
+
+ 	}
  };
 
 
- // header('Location:resources/templates/home.php');
+
+
+
+
 
 
 
@@ -90,10 +117,11 @@
 
 // [TEST CASE 2]
 // dumps information about a variable and prints human-readable information about a variable
-   // var_dump($check_duplicates);
+ // echo '<pre>' , var_dump($_POST) , '</pre>';
  // print_r($query)
 // [END TEST CASE 2]
 
 // header('Location:resources/templates/home.php');
- $mysqli->close();
+
+ // header('Location:resources/templates/home.php');
  ?>

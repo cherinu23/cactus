@@ -35,6 +35,7 @@
  		$errors['password'] = "The two password do not match";
  	}
 
+ // checking for duplicates
 
  	$chkd = $mysqli->prepare("SELECT * FROM user WHERE email = ? LIMIT 1");
  	$chkd->bind_param("s", $email);
@@ -58,6 +59,7 @@
  		$errors['username'] = "Username already exists";
  	}
 
+ // insert if no errors are found
 
  	if (count($errors) === 0) {
  		
@@ -68,9 +70,6 @@
 
  		$secon = $mysqli->prepare("INSERT INTO user (username, email, password, verified, token) VALUES (?, ?, ?, ?, ?)");
  		$secon->bind_param("sssds", $username, $email, $password, $verified, $token);
- 		$secon->execute();
- 		
-
  		if ($secon->execute()) {
  		// login user
  			$user_id = $mysqli->insert_id;

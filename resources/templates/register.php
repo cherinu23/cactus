@@ -9,16 +9,16 @@
 
 <form id="register-form" action="" method="post" role="form" style="display: none;">
 	<div class="form-group">
-		<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="<?php echo $username; ?>" ="">
+		<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="<?php echo $username; ?>" required="required">
 	</div>
 	<div class="form-group">
-		<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="<?php echo $email; ?>" ="">
+		<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="<?php echo $email; ?>" required="required">
 	</div>
 	<div class="form-group">
-		<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" ="">
+		<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="">
 	</div>
 	<div class="form-group">
-		<input type="password" name="confirm_password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" ="">
+		<input type="password" name="confirm_password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" required="required">
 	</div>
 	<div class="form-group">
 		<div class="row">

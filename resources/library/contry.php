@@ -77,7 +77,7 @@
  			$_SESSION['username'] = $username;
  			$_SESSION['email'] = $email;
  			$_SESSION['verified'] = $verified;
- 		// inform user loged in
+ 		// inform user loged in after redirected 
  			$_SESSION['message'] = "Your are no logged in!";
  			$_SESSION['alert-class'] = "alert-succes";
  			header('Location:resources/templates/home.php');

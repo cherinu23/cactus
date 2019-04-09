@@ -1,4 +1,6 @@
-<!-- TO BE TEMPLATED -->
+<?php 
+require_once(realpath(dirname(__FILE__) . "/../config.php"));
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +8,12 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <title>Reset your password</title>
- <!-- CDN/Bootstrap CSS -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
- <!-- CDN/FontAwesome CSS -->
+ <!-- Bootstrap CSS -->
+ <link href="<?php echo CSS_DIR ?>/css/bootstrap-4.2.1.min.css" rel="stylesheet" type="text/css"/>
+ <!-- FontAwesome CSS -->
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
- <!-- LocalCustom CSS -->
- <link rel="stylesheet" href="/css/custom.css">
+ <!-- Custom CSS -->
+ <link href="<?php echo CSS_DIR ?>/css/custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body class="g-bg-all">
   <div class="container">
@@ -42,9 +44,11 @@
   </div>
   <!-- Custom JavaScript -->
 
-  <!-- CDN/jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/jquery-3.2.1.slim.min.js"></script>
+  <!-- using normal jquery aswell because the slim version removes some functions -->
+  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/popper-1.12.9.min.js"></script>
+  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/bootstrap-4.0.0.min.js"></script>
 </body>
 </html>

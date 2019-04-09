@@ -23,7 +23,7 @@
 										<div class="row">
 											<div class="col">
 												<div class="text-center">
-													<a href="resources/templates/reset.html" tabindex="5" class="forgot-password">Forgot Password?</a>
+													<a href="resources/templates/reset.php" tabindex="5" class="forgot-password">Forgot Password?</a>
 												</div>
 											</div>
 										</div>

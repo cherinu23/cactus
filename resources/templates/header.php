@@ -2,11 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Cactus</title>
+	<!-- Bootstrap CSS -->
 	<link href="<?php echo CSS_DIR ?>css/bootstrap-4.2.1.min.css" rel="stylesheet" type="text/css"/>
+	<!-- FontAwesome CSS -->
 	<link href="<?php echo CSS_DIR ?>css/fontawesome-5.7.1.all.css" rel="stylesheet" type="text/css"/>
+	<!-- Custom CSS -->
 	<link href="<?php echo CSS_DIR ?>css/custom.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -38,3 +42,6 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col">
+
+
+

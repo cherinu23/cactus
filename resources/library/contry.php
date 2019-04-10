@@ -78,8 +78,8 @@
  			$_SESSION['email'] = $email;
  			$_SESSION['verified'] = $verified;
  		// inform user loged in after redirected 
- 			$_SESSION['message'] = "Your are no logged in!";
- 			$_SESSION['alert-class'] = "alert-succes";
+ 			$_SESSION['message'] = "You are now logged in!";
+ 			$_SESSION['alert-class'] = "alert-success";
  			header('Location:resources/templates/home.php');
  			exit();
 

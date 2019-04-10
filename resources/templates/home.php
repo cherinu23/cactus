@@ -66,6 +66,12 @@ require_once(realpath(dirname(__FILE__) . "/../config.php"));
       </nav>
 
       <div class="container-fluid">
+     <!--    <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Success!</strong> You are now logged in!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
         <h1 class="mt-4">Portif tasks to be added here</h1>
         <div id="tabu1">Aici vor fi adaugate ideile</div>
         <div id="tabu2">Aici va fi adaugata planificarea</div>

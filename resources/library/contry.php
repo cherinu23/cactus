@@ -79,7 +79,7 @@
  			$_SESSION['verified'] = $verified;
  		// inform user loged in after redirected 
  			$_SESSION['message'] = "You are now logged in!";
- 			$_SESSION['alert-class'] = "alert-success";
+ 			$_SESSION['alert-class'] = "alert-success alert-dismissible fade show";
  			header('Location:resources/templates/home.php');
  			exit();
 

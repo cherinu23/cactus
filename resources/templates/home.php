@@ -1,5 +1,6 @@
 <?php 
 require_once(realpath(dirname(__FILE__) . "/../config.php"));
+require(LIBRARY_PATH . "/contry.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@ require_once(realpath(dirname(__FILE__) . "/../config.php"));
 
     <!-- Sidebar -->
     <div class="bg-light2 border-right2" id="sidebar-wrapper">
-      <div class="sidebar-heading">Portif</div>
+      <div class="sidebar-heading">CACTUS</div>
       <div class="list-group list-group-flush">
         <div class="list-group-item list-group-item-action list-group-item-primary">
           <a href="#" class="ptab1 ">Idei</a>
@@ -66,32 +67,65 @@ require_once(realpath(dirname(__FILE__) . "/../config.php"));
       </nav>
 
       <div class="container-fluid">
-     <!--    <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong> You are now logged in!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <!-- shows you are logged in and after refreshing the page the alert/message disapears  -->
+        <?php if(isset($_SESSION['message'])): ?>
+          <div class="alert <?php echo $_SESSION['alert-class']; ?> col-md-3">
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&#8855;</span>
           </button>
-        </div> -->
-        <h1 class="mt-4">Portif tasks to be added here</h1>
-        <div id="tabu1">Aici vor fi adaugate ideile</div>
-        <div id="tabu2">Aici va fi adaugata planificarea</div>
-        <div id="tabu3">Aici vom adauga proiectele in lucru</div>
+          <?php 
+          echo $_SESSION['message']; 
+          unset($_SESSION['message']); 
+          unset($_SESSION['alert-class']); 
+          ?>
+        </div>
+      <?php endif;?>
 
-      </div>
+      <h3>Welcome, <?php echo $_SESSION['username']; ?></h3>
+      <!-- if the session does not verify the account message will display -->
+      <?php if(!$_SESSION['verified']): ?>
+        <div class="alert alert-warning col-md-3">
+          You need to verify your account.
+          Sign in to your email account and click on the verification link we just emailed you at
+          <strong><?php echo $_SESSION['email']; ?></strong>
+        </div>
+      <?php endif; ?>
+
+      <?php if($_SESSION['verified']): ?>
+        <button class="btn btn-lg btn-primary col-md-3">I am verified!</button>
+      <?php endif; ?>
     </div>
-    <!-- /#page-content-wrapper -->
+
+    <h1 class="mt-4">Cactus tasks to be added here</h1>
+    <div id="tabu1">Aici vor fi adaugate ideile</div>
+    <div id="tabu2">Aici va fi adaugata planificarea</div>
+    <div id="tabu3">Aici vom adauga proiectele in lucru</div>
 
   </div>
-  <!-- Custom JavaScript -->
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/jquery-3.2.1.slim.min.js"></script>
-  <!-- using normal jquery aswell because the slim version removes some functions -->
-  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/popper-1.12.9.min.js"></script>
-  <script type="text/javascript" src="<?php echo JS_DIR; ?>/js/bootstrap-4.0.0.min.js"></script>
-  <!-- Menu Toggle Script -->
-  <script>
+</div>
+<!-- /#page-content-wrapper -->
+
+
+<!-- Footer -->
+<footer class="footer">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="https://github.com/cherinu23/cactus"> cactus.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+<!-- Custom JavaScript -->
+<!-- put custom js here -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="<?php echo JS_DIR; ?>/js/jquery-3.2.1.slim.min.js"></script>
+<!-- using normal jquery aswell because the slim version removes some functions -->
+<script type="text/javascript" src="<?php echo JS_DIR; ?>/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="<?php echo JS_DIR; ?>/js/popper-1.12.9.min.js"></script>
+<script type="text/javascript" src="<?php echo JS_DIR; ?>/js/bootstrap-4.0.0.min.js"></script>
+<!-- Menu Toggle Script -->
+<script>
 //toggle la meniu
 $("#menu-toggle").click(function(e) {
   e.preventDefault();

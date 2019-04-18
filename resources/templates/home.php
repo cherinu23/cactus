@@ -1,6 +1,13 @@
 <?php 
 require_once(realpath(dirname(__FILE__) . "/../config.php"));
 require(LIBRARY_PATH . "/contry.php");
+
+// if not logged in it will head back to index.php
+if(!isset($_SESSION['id'])) {
+  header('Location: /../index.php');
+  exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -59,7 +59,7 @@ require(LIBRARY_PATH . "/contry.php");
                 <a class="dropdown-item dropdown-item2" href="#">Action</a>
                 <a class="dropdown-item dropdown-item2" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item dropdown-item2" href="#">Sign out</a>
+                <a class="dropdown-item dropdown-item2" href="/../index.php?logout=1">Sign out</a>
               </div>
             </li>
           </ul>
@@ -95,7 +95,6 @@ require(LIBRARY_PATH . "/contry.php");
         <button class="btn btn-lg btn-primary col-md-3">I am verified!</button>
       <?php endif; ?>
     </div>
-
     <h1 class="mt-4">Cactus tasks to be added here</h1>
     <div id="tabu1">Aici vor fi adaugate ideile</div>
     <div id="tabu2">Aici va fi adaugata planificarea</div>

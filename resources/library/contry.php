@@ -90,11 +90,65 @@
  	}
  };
 
+// if user clicks the login button
+
+ if (isset($_POST['login-submit'])) {
+ 	$username = $_POST['username'];
+ 	$password = $_POST['password'];
+
+// validation
+
+ 	if (empty($username)) {
+ 		$errors['username'] = "Username required";
+ 	}
+
+ 	if (empty($password)) {
+ 		$errors['password'] = "Password required";
+ 	}
 
 
+ 	if (count($errors) === 0) {
+
+ 		$lgin = $mysqli->prepare("SELECT * FROM user WHERE username = ? OR email = ? LIMIT 1");
+ 		$lgin->bind_param("ss", $username, $username);
+ 		$lgin->execute();
+ 		$result = $lgin->get_result();
+ 		$user = $result->fetch_assoc();
 
 
+ 		if (password_verify($password, $user['password'])) {
+ 		// login succes
+ 			$_SESSION['id'] = $user['id'];
+ 			$_SESSION['username'] = $user['username'];
+ 			$_SESSION['email'] = $user['email'];
+ 			$_SESSION['verified'] = $user['verified'];
+ 		// inform user loged in after redirected 
+ 			$_SESSION['message'] = "You are now logged in!";
+ 			$_SESSION['alert-class'] = "alert-success alert-dismissible fade show";
+ 			header('Location:resources/templates/home.php');
+ 			exit();	
+ 		} else {
 
+ 			$errors['login_fail'] = "Wrong credentials";	
+ 		}
+ 		
+
+ 	}
+ 	
+ };
+
+
+ //logout user
+
+if (isset($_GET['dropdown-item dropdown-item2'])) {
+	session_destroy();
+	unset($_SESSION['id']);
+	unset($_SESSION['username']);
+	unset($_SESSION['email']);
+	unset($_SESSION['verified']);
+	header('Location: index.php');
+	exit();
+}
 
 
 
@@ -123,4 +177,5 @@
 // header('Location:resources/templates/home.php');
 
  // header('Location:resources/templates/home.php');
+
  ?>

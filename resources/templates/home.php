@@ -1,12 +1,12 @@
 <?php 
 require_once(realpath(dirname(__FILE__) . "/../config.php"));
 require(LIBRARY_PATH . "/contry.php");
-
+require(LIBRARY_PATH . "/addTask.php");
 // if not logged in it will head back to index.php
-if(!isset($_SESSION['id'])) {
-  header('Location: /../index.php');
-  exit();
-}
+// if(!isset($_SESSION['id'])) {
+//   header('Location: /../index.php');
+//   exit();
+// }
 
 ?>
 <!DOCTYPE html>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['id'])) {
       <?php endif;?>
 
       <h3>Welcome, <?php echo $_SESSION['username']; ?></h3>
-      <!-- if the session does not verify the account message will display -->
+      <!-- if the account is not verified message will display -->
       <?php if(!$_SESSION['verified']): ?>
         <div class="alert alert-warning col-md-3">
           You need to verify your account.
@@ -99,20 +99,36 @@ if(!isset($_SESSION['id'])) {
       <?php endif; ?>
 
       <?php if($_SESSION['verified']): ?>
-        <button class="btn btn-lg btn-primary col-md-3">I am verified!</button>
+        <button class="btn btn-primary-2">I am verified!</button>
       <?php endif; ?>
     </div>
-    <h1 class="mt-4">Cactus tasks to be added here</h1>
-    <div id="tabu1">Aici vor fi adaugate ideile</div>
-    <div id="tabu2">Aici va fi adaugata planificarea</div>
-    <div id="tabu3">Aici vom adauga proiectele in lucru</div>
+    <div class="container-fluid container-fluid2">
+      <?php if(count($errors) > 0): ?>
+        <div class="alert alert-danger">
+          <?php foreach($errors as $error): ?>
+            <li><?php echo $error; ?></li>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+      <div id="tabu1">
+        <form method="post" action="">
+          <div class="input-group mb-3">
+            <input type="text" name="task" class="form-control" placeholder="Add task here" aria-label="Add task here" aria-describedby="button-addon2">
+            <div class="input-group-append">
+            <button class="btn btn-primary-2" type="submit" id="button-addon2" name="submit-task">Add Task</button>
+            </div>
+          </form>
+        </div>
+        
+
+      </div>
+      <div id="tabu2">Aici va fi adaugata planificarea</div>
+      <div id="tabu3">Aici vom adauga proiectele in lucru</div>
+    </div>
 
   </div>
 
 </div>
-<!-- /#page-content-wrapper -->
-
-
 <!-- Footer -->
 <footer class="footer">
   <!-- Copyright -->
@@ -122,6 +138,11 @@ if(!isset($_SESSION['id'])) {
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
+</body>
+<!-- /#page-content-wrapper -->
+
+
+
 <!-- Custom JavaScript -->
 <!-- put custom js here -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

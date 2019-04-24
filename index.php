@@ -5,6 +5,4 @@ require(TEMPLATES_PATH . "/header.php");
 require(TEMPLATES_PATH . "/login.php");
 require(TEMPLATES_PATH . "/register.php");
 require(TEMPLATES_PATH . "/footer.php");
-
-
 ?>

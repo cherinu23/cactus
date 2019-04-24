@@ -137,19 +137,19 @@
  	
  };
 
-
+//fa tutorial cu verificare email 
  //logout user
 
-if (isset($_GET['dropdown-item dropdown-item2'])) {
-	session_destroy();
-	unset($_SESSION['id']);
-	unset($_SESSION['username']);
-	unset($_SESSION['email']);
-	unset($_SESSION['verified']);
-	header('Location: index.php');
-	exit();
-}
-
+ if (isset($_GET['dropdown-item dropdown-item2'])) {
+ 	session_destroy();
+ 	unset($_SESSION['id']);
+ 	unset($_SESSION['username']);
+ 	unset($_SESSION['email']);
+ 	unset($_SESSION['password']);
+ 	unset($_SESSION['verified']);
+ 	header('Location: index.php');
+ 	exit();
+ }
 
 
 
@@ -167,10 +167,9 @@ if (isset($_GET['dropdown-item dropdown-item2'])) {
 // [END TEST CASE 1]
 
 
-
 // [TEST CASE 2]
 // dumps information about a variable and prints human-readable information about a variable
- // echo '<pre>' , var_dump($_POST) , '</pre>';
+ 
  // print_r($query)
 // [END TEST CASE 2]
 

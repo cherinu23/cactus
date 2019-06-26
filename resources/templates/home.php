@@ -110,16 +110,30 @@ require(LIBRARY_PATH . "/addTask.php");
           <?php endforeach; ?>
         </div>
       <?php endif; ?>
+
+      <!-- ADD TASK TAB LINKED TO addTask.php -->
       <div id="tabu1">
         <form method="post" action="">
           <div class="input-group mb-3">
-            <input type="text" name="task" class="form-control" placeholder="Add task here" aria-label="Add task here" aria-describedby="button-addon2">
+            <input type="text" name="task" class="form-control form-control2" placeholder="Add task here" aria-label="Add task here" aria-describedby="button-addon2">
             <div class="input-group-append">
-            <button class="btn btn-primary-2" type="submit" id="button-addon2" name="submit-task">Add Task</button>
+              <button class="btn btn-primary-2" type="submit" id="button-addon2" name="submit-task">Add Task</button>
             </div>
           </form>
+          <table class="table table2">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">N</th>
+                <th scope="col">Task</th>
+                <th style="width: 60px;" scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+           
+            </tbody>
+          </table>
         </div>
-        
+        <!-- END OF ADD TASK TAB LINKED TO addTask.php -->
 
       </div>
       <div id="tabu2">Aici va fi adaugata planificarea</div>
